@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,10 @@ namespace DataBase
       services.AddEntityFrameworkMySql()
         .AddDbContext<DataBaseContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<DataBaseContext>()
+                .AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app)
@@ -34,6 +39,8 @@ namespace DataBase
       app.UseStaticFiles();
 
       app.UseDeveloperExceptionPage();
+
+      app.UseAuthentication();
 
       app.UseMvc(routes =>
       {
