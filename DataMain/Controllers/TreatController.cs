@@ -1,72 +1,51 @@
 using Microsoft.AspNetCore.Mvc;
-using DataBase.Models;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
+using DataBase.Models;
+
 
 namespace DataBase.Controllers
 {
-  public class CategoriesController : Controller
-  {
-    private readonly DataBaseContext _db;
 
-    public CategoriesController(DataBaseContext db)
+    class TreatController : Controller
     {
-      _db = db;
-    }
+        private readonly TreatContext _db;
 
-    public ActionResult Index()
-    {
-      List<Category> model = _db.Categories.ToList();
-      return View(model);
-    }
+        public TreatController(TreatContext db)
+        {
+            _db = db;
+        }
 
-    public ActionResult Create()
-    {
-      return View();
-    }
+        public ActionResult Index()
+        {
+            var treats = _db.treats.ToList();
+            return View(treats);
+        }
 
-    [HttpPost]
-    public ActionResult Create(Category category)
-    {
-      _db.Categories.Add(category);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-    public ActionResult Details(int id)
-    {
-      Category thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-      return View(thisCategory);
-    }
+        [HttpPost]
+        public ActionResult Create(treat treat)
+        {
+            _db.treats.Add(treat);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-    public ActionResult Edit(int id)
-    {
-      var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-      return View(thisCategory);
-    }
+        public ActionResult Details(int id)
+        {
 
-    [HttpPost]
-    public ActionResult Edit(Category category)
-    {
-      _db.Entry(category).State = EntityState.Modified;
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+            var model = _db.treats
+            .Include(treat => treat.Genres)
+            .ThenInclude(join => join.Genre)
+            .FirstOrDefault(treat => treat.treatId == id);
+            return View(model);
+        }
     }
-
-    public ActionResult Delete(int id)
-    {
-      var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-      return View(thisCategory);
-    }
-
-    [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
-    {
-      var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
-      _db.Categories.Remove(thisCategory);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
-  }
 }
