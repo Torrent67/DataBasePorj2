@@ -6,12 +6,12 @@ namespace DataBase.Models
     {
         public Treat()
         {
-            this.Flavor = new HashSet<FlavorTreat>();
+            this.Flavors = new HashSet<FlavorTreat>();
         }
 
         public int TreatId { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        public ICollection<FlavorTreat> Flavor { get; }
+        public ICollection<FlavorTreat> Flavors { get; }
     }
 }

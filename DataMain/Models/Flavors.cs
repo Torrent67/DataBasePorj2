@@ -2,15 +2,22 @@ using System.Collections.Generic;
 
 namespace DataBase.Models
 {
-    public class Flavors
+    [Table("Flavors")]
+    public class Flavor
     {
-        public Flavors()
-        {
-            this.Treats = new HashSet<FlavorsTreat>();
-        }
+        [Key]
+        public int FlavorId { get; set; }
+        public string Description { get; set; }
 
-        public int FlavorsId { get; set; }
-        public string Name { get; set; }
-        public virtual ICollection<FlavorsTreat> Treats { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
+        public ICollection<FlavorTreat> Treats { get; }
+
+
+        public Flavor()
+        {
+            this.Treats = new HashSet<FlavorTreat>();
+        }
     }
+
 }

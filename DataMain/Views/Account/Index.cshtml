@@ -2,6 +2,19 @@
   Layout = "_Layout";
 }
 
-<h2>Authentication with Identity</h2>
-<hr />
-<p>@Html.ActionLink("Register", "Register")</p>
+@using System.Security.Claims;
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name!</p>
+    @using (Html.BeginForm("LogOff", "Account"))
+    {
+        <input type="submit" class="btn btn-default" value="Log Out"/>
+    }
+    <p>@Html.ActionLink("Go to home", "Index", "Home")</p>
+}
+else
+{
+    <p>@Html.ActionLink("Register new account", "Register")</p>
+    <p>@Html.ActionLink("Log in", "Login")</p>
+}

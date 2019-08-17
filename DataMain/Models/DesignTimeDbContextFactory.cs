@@ -5,22 +5,22 @@ using System.IO;
 
 namespace DataBase.Models
 {
-    public class TreatContextFactory : IDesignTimeDbContextFactory<LibraryContext>
+    public class DataBaseContextFactory : IDesignTimeDbContextFactory<DataBaseContext>
     {
 
-        LibraryContext IDesignTimeDbContextFactory<LibraryContext>.CreateDbContext(string[] args)
+        DataBaseContext IDesignTimeDbContextFactory<DataBaseContext>.CreateDbContext(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var builder = new DbContextOptionsBuilder<LibraryContext>();
+            var builder = new DbContextOptionsBuilder<DataBaseContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             builder.UseMySql(connectionString);
 
-            return new LibraryContext(builder.Options);
+            return new DataBaseContext(builder.Options);
         }
     }
 }
