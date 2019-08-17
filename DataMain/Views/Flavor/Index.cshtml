@@ -1,0 +1,24 @@
+{
+  Layout = "_Layout";
+}
+
+@using SweetsTreats.Models;
+@using System.Security.Claims;
+@model List<SweetsTreats.Models.Flavor>;
+
+<h2>List of your tasks, @User.Identity.Name</h2>
+<hr/>
+
+@if (Model.Any())
+{
+ <ul>
+  @foreach (Flavor flavor in Model)
+  {
+    <li>@Html.ActionLink($"{flavor.Description}", "Details", new { id = flavor.FlavorId})</li>
+  }
+</ul>
+} 
+else
+{
+  <h3>No flavors have been added yet.</h3>
+}

@@ -12,16 +12,16 @@ namespace DataBase.Controllers
 
     class TreatController : Controller
     {
-        private readonly TreatContext _db;
+        private readonly DataBaseContext _db;
 
-        public TreatController(TreatContext db)
+        public TreatController(DataBaseContext db)
         {
             _db = db;
         }
 
         public ActionResult Index()
         {
-            var treats = _db.treats.ToList();
+            var treats = _db.Treats.ToList();
             return View(treats);
         }
 
@@ -31,9 +31,9 @@ namespace DataBase.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(treat treat)
+        public ActionResult Create(Treat treat)
         {
-            _db.treats.Add(treat);
+            _db.Treats.Add(treat);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -41,8 +41,8 @@ namespace DataBase.Controllers
         public ActionResult Details(int id)
         {
 
-            var model = _db.treats
-            .Include(treat => treat.Genres)
+            var model = _db.Treats
+            .Include(treat => treat.Genre)
             .ThenInclude(join => join.Genre)
             .FirstOrDefault(treat => treat.treatId == id);
             return View(model);

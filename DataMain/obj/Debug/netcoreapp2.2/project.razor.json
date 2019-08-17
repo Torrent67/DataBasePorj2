@@ -2948,8 +2948,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Categories\\Details.cshtml",
-      "TargetPath": "Views\\Categories\\Details.cshtml",
+      "FilePath": "Views\\Flavors\\Delete.cshtml",
+      "TargetPath": "Views\\Flavors\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2958,38 +2958,48 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Treats\\Edit.cshtml",
+      "TargetPath": "Views\\Treats\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Flavors\\Edit.cshtml",
+      "TargetPath": "Views\\Flavors\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Items\\Details.cshtml",
-      "TargetPath": "Views\\Items\\Details.cshtml",
+      "FilePath": "Views\\Treats\\Details.cshtml",
+      "TargetPath": "Views\\Treats\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Categories\\Index.cshtml",
-      "TargetPath": "Views\\Categories\\Index.cshtml",
+      "FilePath": "Views\\Flavors\\Index.cshtml",
+      "TargetPath": "Views\\Flavors\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Categories\\Create.cshtml",
-      "TargetPath": "Views\\Categories\\Create.cshtml",
+      "FilePath": "Views\\Flavors\\Details.cshtml",
+      "TargetPath": "Views\\Flavors\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Items\\Index.cshtml",
-      "TargetPath": "Views\\Items\\Index.cshtml",
+      "FilePath": "Views\\Treats\\Create.cshtml",
+      "TargetPath": "Views\\Treats\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Categories\\Delete.cshtml",
-      "TargetPath": "Views\\Categories\\Delete.cshtml",
+      "FilePath": "Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Items\\Create.cshtml",
-      "TargetPath": "Views\\Items\\Create.cshtml",
+      "FilePath": "Views\\Treats\\Index.cshtml",
+      "TargetPath": "Views\\Treats\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2998,18 +3008,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Categories\\Edit.cshtml",
-      "TargetPath": "Views\\Categories\\Edit.cshtml",
+      "FilePath": "Views\\Treats\\Delete.cshtml",
+      "TargetPath": "Views\\Treats\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Items\\Edit.cshtml",
-      "TargetPath": "Views\\Items\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views\\Items\\Delete.cshtml",
-      "TargetPath": "Views\\Items\\Delete.cshtml",
+      "FilePath": "Views\\Flavors\\Create.cshtml",
+      "TargetPath": "Views\\Flavors\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],

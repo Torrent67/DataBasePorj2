@@ -8,11 +8,11 @@ namespace DataBase.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly TreatContext _db;
+        private readonly DataBaseContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ToDoListContext db)
+        public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, DataBaseContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
