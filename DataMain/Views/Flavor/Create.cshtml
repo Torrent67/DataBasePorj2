@@ -1,6 +1,6 @@
 @model DataBase.Models.Flavor
 
-<h2>Enter flavor category and choose a treat.</h2>
+<h2>Enter a flavor category and choose a treat.</h2>
 
 @using (Html.BeginForm())
 {
@@ -13,4 +13,4 @@
     <input type="submit" value="Create" class="btn btn-default" />
 }
 
-@Html.ActionLink("Show all flavors", "Index")
+@Html.ActionLink("Show all added flavors", "Index")

@@ -11,7 +11,6 @@ using DataBase.Models;
 
 namespace DataBase.Controllers
 {
-    [Authorize]
     public class FlavorsController : Controller
     {
         private readonly DataBaseContext _db;
@@ -23,34 +22,25 @@ namespace DataBase.Controllers
             _db = db;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            return View(_db.Flavors.Where(x => x.User.Id == currentUser.Id).ToList());
-
+            var model = _db.Flavors.ToList();
+            return View(model);
         }
 
         public ActionResult Create()
         {
-            ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View();
         }
 
 
-
         [HttpPost]
-        public async Task<ActionResult> Create(Flavors flavor, int TreatId)
+        public async Task<ActionResult> Create(Flavor flavors)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            flavor.User = currentUser;
-            _db.Flavors.Add(flavor);
-            if (TreatId != 0)
-            {
-                _db.FlavorTreats.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorsId });
-
-            }
+            flavors.User = currentUser;
+            _db.Flavors.Add(flavors);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -60,24 +50,20 @@ namespace DataBase.Controllers
             var thisFlavor = _db.Flavors
                 .Include(flavor => flavor.Treats)
                 .ThenInclude(join => join.Treat)
-                .FirstOrDefault(flavor => flavor.FlavorsId == id);
+                .FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
 
         public ActionResult Edit(int id)
         {
-            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorsId == id);
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View(thisFlavor);
         }
 
         [HttpPost]
-        public ActionResult Edit(Flavors flavor, int TreatId)
+        public ActionResult Edit(Flavor flavor)
         {
-            if (TreatId != 0)
-            {
-                _db.FlavorTreats.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorsId });
-            }
             _db.Entry(flavor).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -85,24 +71,15 @@ namespace DataBase.Controllers
 
         public ActionResult Delete(int id)
         {
-            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorsId == id);
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
             return View(thisFlavor);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorsId == id);
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
             _db.Flavors.Remove(thisFlavor);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult DeleteCategory(int joinId)
-        {
-            var joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
-            _db.FlavorTreats.Remove(joinEntry);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

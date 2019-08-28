@@ -2,11 +2,11 @@
   Layout = "_Layout";
 }
 
-@using SweetsTreats.Models;
+@using DataBase.Models;
 @using System.Security.Claims;
-@model List<SweetsTreats.Models.Flavor>;
+@model List<DataBase.Models.Flavor>;
 
-<h2>List of your tasks, @User.Identity.Name</h2>
+<h2>List of your flavors. @User.Identity.Name</h2>
 <hr/>
 
 @if (Model.Any())

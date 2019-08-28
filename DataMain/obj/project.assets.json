@@ -12156,11 +12156,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Action\\Desktop\\DataBase2\\DataMain\\DataMain.csproj",
+      "projectUniqueName": "C:\\Users\\Action\\desktop\\DataBasePorj2\\datamain\\DataMain.csproj",
       "projectName": "DataMain",
-      "projectPath": "c:\\Users\\Action\\Desktop\\DataBase2\\DataMain\\DataMain.csproj",
+      "projectPath": "C:\\Users\\Action\\desktop\\DataBasePorj2\\datamain\\DataMain.csproj",
       "packagesPath": "C:\\Users\\Action\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Action\\Desktop\\DataBase2\\DataMain\\obj\\",
+      "outputPath": "C:\\Users\\Action\\desktop\\DataBasePorj2\\datamain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
