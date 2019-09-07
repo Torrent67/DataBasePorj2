@@ -13,7 +13,7 @@ using DataBase.Models;
 
 namespace DataBase.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class TreatsController : Controller
     {
         private readonly DataBaseContext _db;
@@ -24,7 +24,7 @@ namespace DataBase.Controllers
             _db = db;
             _userManager = usermanager;
         }
-
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -32,6 +32,7 @@ namespace DataBase.Controllers
             return View(_db.Treats.Where(x => x.User.Id == currentUser.Id).ToList());
 
         }
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var model = _db.Treats
@@ -56,20 +57,12 @@ namespace DataBase.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Description");
             var thisTreat = _db.Treats.FirstOrDefault(categories => categories.TreatId == id);
             return View(thisTreat);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(Treat treat)
-        {
-            ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Description");
-            _db.Entry(treat).State = EntityState.Modified;
-            _db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
@@ -86,6 +79,27 @@ namespace DataBase.Controllers
             _db.Treats.Remove(thisTreat);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        
+        [HttpPost]
+        public ActionResult AddFlavor(Treat treat, int FlavorId)
+        {
+            if (FlavorId != 0)
+            {
+                _db.FlavorTreats.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
+            }
+            _db.Entry(treat).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Details", new { id = treat.TreatId });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteFlavor(int joinId, int treatId)
+        {
+            var joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+            _db.FlavorTreats.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Details", new { id = treatId });
         }
     }
 }

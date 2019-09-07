@@ -4,15 +4,15 @@
 
 @using DataBase.Models;
 @using System.Security.Claims;
-@model List<DataBase.Models.Flavor>;
+@model List<DataBase.Models.Flavors>;
 
-<h2>List of your flavors. @User.Identity.Name</h2>
+<h2>List of your Flavors, @User.Identity.Name</h2>
 <hr/>
 
 @if (Model.Any())
 {
  <ul>
-  @foreach (Flavor flavor in Model)
+  @foreach (Flavors flavor in Model)
   {
     <li>@Html.ActionLink($"{flavor.Description}", "Details", new { id = flavor.FlavorId})</li>
   }
@@ -22,3 +22,5 @@ else
 {
   <h3>No flavors have been added yet.</h3>
 }
+<p>@Html.ActionLink("Add a new flavor", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

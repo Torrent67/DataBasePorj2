@@ -35,7 +35,7 @@ namespace DataBase.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Create(Flavor flavors)
+        public async Task<ActionResult> Create(Flavors flavors)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
@@ -62,7 +62,7 @@ namespace DataBase.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Flavor flavor)
+        public ActionResult Edit(Flavors flavor)
         {
             _db.Entry(flavor).State = EntityState.Modified;
             _db.SaveChanges();
