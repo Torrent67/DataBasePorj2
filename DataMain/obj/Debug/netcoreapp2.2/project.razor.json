@@ -2966,6 +2966,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Flavors/Edit.cshtml",
+      "TargetPath": "Views/Flavors/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Account/Index.cshtml",
       "TargetPath": "Views/Account/Index.cshtml",
       "FileKind": "mvc"
@@ -2976,13 +2981,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Flavor/Delete.cshtml",
-      "TargetPath": "Views/Flavor/Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Views/Flavor/Details.cshtml",
-      "TargetPath": "Views/Flavor/Details.cshtml",
+      "FilePath": "Views/Flavors/Create.cshtml",
+      "TargetPath": "Views/Flavors/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2991,8 +2991,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Flavor/Edit.cshtml",
-      "TargetPath": "Views/Flavor/Edit.cshtml",
+      "FilePath": "Views/Flavors/Delete.cshtml",
+      "TargetPath": "Views/Flavors/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3006,8 +3006,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Flavor/Create.cshtml",
-      "TargetPath": "Views/Flavor/Create.cshtml",
+      "FilePath": "Views/Flavors/Index.cshtml",
+      "TargetPath": "Views/Flavors/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3021,11 +3021,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Flavor/Index.cshtml",
-      "TargetPath": "Views/Flavor/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views/Account/Login.cshtml",
       "TargetPath": "Views/Account/Login.cshtml",
       "FileKind": "mvc"
@@ -3033,6 +3028,11 @@
     {
       "FilePath": "Views/Treats/Delete.cshtml",
       "TargetPath": "Views/Treats/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Flavors/Details.cshtml",
+      "TargetPath": "Views/Flavors/Details.cshtml",
       "FileKind": "mvc"
     }
   ],

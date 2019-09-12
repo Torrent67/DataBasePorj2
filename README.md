@@ -21,7 +21,10 @@
 ## Setup/Installation Requirements
 
 * Clone repository from GitHub, 
-* Once cloned to your desktop navigate into the folder and run the command "dotnet restore" in the command line, then "dotnet run".
+* Once cloned to your desktop navigate into the folder and run the command "dotnet restore" in the command line, 
+* dotnet restore
+* dotnet ef database update
+* dotnet run
 
 ## Known Bugs
 * no known bugs at this time.
