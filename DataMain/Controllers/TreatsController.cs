@@ -13,7 +13,7 @@ using DataBase.Models;
 
 namespace DataBase.Controllers
 {
-    // [Authorize]
+    
     public class TreatsController : Controller
     {
         private readonly DataBaseContext _db;

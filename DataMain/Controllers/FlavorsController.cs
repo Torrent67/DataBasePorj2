@@ -48,9 +48,9 @@ namespace DataBase.Controllers
         public ActionResult Details(int id)
         {
             var thisFlavor = _db.Flavors
-                .Include(flavor => flavor.Treats)
+                .Include(flavors => flavors.Treats)
                 .ThenInclude(join => join.Treat)
-                .FirstOrDefault(flavor => flavor.FlavorId == id);
+                .FirstOrDefault(flavors => flavors.FlavorId == id);
             return View(thisFlavor);
         }
 
@@ -62,9 +62,9 @@ namespace DataBase.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Flavors flavor)
+        public ActionResult Edit(Flavors flavors)
         {
-            _db.Entry(flavor).State = EntityState.Modified;
+            _db.Entry(flavors).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

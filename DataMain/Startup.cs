@@ -15,11 +15,11 @@ namespace DataBase
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddEnvironmentVariables();
+                .AddJsonFile("appsettings.json");
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot Configuration {get;}
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -35,11 +35,11 @@ namespace DataBase
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.Password.RequireDigit = true;
+                options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 4;
-                options.Password.RequireLowercase = true;
+                options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = true;
+                options.Password.RequireUppercase = false;
                 options.Password.RequiredUniqueChars = 0;
             });
         }

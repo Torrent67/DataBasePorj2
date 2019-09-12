@@ -1,4 +1,4 @@
-@model DataBase.Models.Flavor
+@model DataBase.Models.Flavors
 
 <h2>Enter a flavor category and choose a treat.</h2>
 
@@ -8,7 +8,7 @@
     @Html.EditorFor(model => model.Description)
 
     @Html.Label("Select treat")
-    @Html.DropDownList("TreatId")
+    
 
     <input type="submit" value="Create" class="btn btn-default" />
 }

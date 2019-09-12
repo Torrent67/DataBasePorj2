@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataMain.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20190828035607_Initial")]
-    partial class Initial
+    [Migration("20190912170006_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,22 +69,6 @@ namespace DataMain.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("DataBase.Models.Flavor", b =>
-                {
-                    b.Property<int>("FlavorId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("FlavorId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Flavors");
-                });
-
             modelBuilder.Entity("DataBase.Models.FlavorTreat", b =>
                 {
                     b.Property<int>("FlavorTreatId")
@@ -101,6 +85,22 @@ namespace DataMain.Migrations
                     b.HasIndex("TreatId");
 
                     b.ToTable("FlavorTreats");
+                });
+
+            modelBuilder.Entity("DataBase.Models.Flavors", b =>
+                {
+                    b.Property<int>("FlavorId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("FlavorId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Flavors");
                 });
 
             modelBuilder.Entity("DataBase.Models.Treat", b =>
@@ -226,16 +226,9 @@ namespace DataMain.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DataBase.Models.Flavor", b =>
-                {
-                    b.HasOne("DataBase.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("DataBase.Models.FlavorTreat", b =>
                 {
-                    b.HasOne("DataBase.Models.Flavor", "Flavor")
+                    b.HasOne("DataBase.Models.Flavors", "Flavor")
                         .WithMany("Treats")
                         .HasForeignKey("FlavorId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -244,6 +237,13 @@ namespace DataMain.Migrations
                         .WithMany("Flavors")
                         .HasForeignKey("TreatId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DataBase.Models.Flavors", b =>
+                {
+                    b.HasOne("DataBase.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("DataBase.Models.Treat", b =>
